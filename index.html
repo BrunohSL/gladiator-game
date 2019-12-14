@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>Making your first Phaser 3 Game - Part 5</title>
+        <title>Gladiator</title>
         <script src="./phaser.min.js"></script>
         <style type="text/css">
             body {
@@ -36,11 +36,7 @@
             var actionButton;
 
             var playerSpeed = 220;
-            var battle_door;
-            var equipment_door;
-            var magic_door;
-            var potion_door;
-            var enchantment_door;
+            var doors;
 
             var game = new Phaser.Game(config);
 
@@ -65,11 +61,7 @@
 
                 // Parameters: layer name (or index) from Tiled, tileset, x, y
                 const background = map.createStaticLayer("background", tileset, 0, 0);
-                battle_door = map.createStaticLayer("battle_door", tileset, 0, 0);
-                equipment_door = map.createStaticLayer("equipment_door", tileset, 0, 0);
-                magic_door = map.createStaticLayer("magic_door", tileset, 0, 0);
-                potion_door = map.createStaticLayer("potion_door", tileset, 0, 0);
-                enchantment_door = map.createStaticLayer("enchantment_door", tileset, 0, 0);
+                doors = map.createStaticLayer("doors", tileset, 0, 0);
                 const scenario = map.createStaticLayer("scenario", tileset, 0, 0);
 
                 // ----------------------------------------------------
@@ -90,28 +82,6 @@
 
                 this.physics.add.collider(player, scenario);
                 this.physics.add.collider(player, background);
-
-                // ----------------------------------------------------
-
-                // this.anims.create({
-                //     key: 'left',
-                //     frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
-                //     frameRate: 10,
-                //     repeat: -1
-                // });
-
-                // this.anims.create({
-                //     key: 'turn',
-                //     frames: [ { key: 'dude', frame: 4 } ],
-                //     frameRate: 20
-                // });
-
-                // this.anims.create({
-                //     key: 'right',
-                //     frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
-                //     frameRate: 10,
-                //     repeat: -1
-                // });
 
                 // ----------------------------------------------------
             }
@@ -137,17 +107,42 @@
                     player.body.setVelocityY(playerSpeed);
                 }
 
-                var tile = battle_door.getTileAtWorldXY(player.x, player.y);
+                var tile = doors.getTileAtWorldXY(player.x, player.y);
+
                 if (tile) {
-                // if (tile.index) {
-                    // console.log(tile);
                     canEnter = true;
-                    // console.log("overlap");
+                } else {
+                    canEnter= false;
                 }
 
-                if (canEnter === true && actionButton.isDown) {
-                    console.log(tile);
-                    console.log("Entrou");
+                if (canEnter === true) {
+                    switch (tile.properties.store) {
+                        case 'battle':
+                            if (actionButton.isDown) {
+                                console.log("entrou na batalha");
+                            }
+                            break;
+                        case 'equipment':
+                            if (actionButton.isDown) {
+                                console.log("entrou na loja de armas");
+                            }
+                            break;
+                        case 'magic':
+                            if (actionButton.isDown) {
+                                console.log("entrou na loja de magica");
+                            }
+                            break;
+                        case 'potion':
+                            if (actionButton.isDown) {
+                                console.log("entrou na loja de poção");
+                            }
+                            break;
+                        case 'enchantment':
+                            if (actionButton.isDown) {
+                                console.log("entrou na loja de encantamentos");
+                            }
+                            break;
+                    }
                 }
 
                 // Normalize and scale the velocity so that player can't move faster along a diagonal
