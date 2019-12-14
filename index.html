@@ -11,7 +11,6 @@
         </style>
     </head>
     <body>
-        <!-- <script type="text/javascript" src="./index.js"></script> -->
         <script type="text/javascript">
             var config = {
                 type: Phaser.AUTO,
@@ -20,7 +19,6 @@
                 physics: {
                     default: 'arcade',
                     arcade: {
-                        // gravity: { y: 300 },
                         debug: true
                     }
                 },
@@ -32,14 +30,17 @@
             };
 
             var player;
-            // var stars;
-            // var platforms;
             var cursors;
-            // var score = 0;
-            // var scoreText;
+            var canEnter = false;
+
+            var actionButton;
 
             var playerSpeed = 220;
-            var houseDoor;;
+            var battle_door;
+            var equipment_door;
+            var magic_door;
+            var potion_door;
+            var enchantment_door;
 
             var game = new Phaser.Game(config);
 
@@ -64,16 +65,12 @@
 
                 // Parameters: layer name (or index) from Tiled, tileset, x, y
                 const background = map.createStaticLayer("background", tileset, 0, 0);
-                const door = map.createStaticLayer("door", tileset, 0, 0);
+                battle_door = map.createStaticLayer("battle_door", tileset, 0, 0);
+                equipment_door = map.createStaticLayer("equipment_door", tileset, 0, 0);
+                magic_door = map.createStaticLayer("magic_door", tileset, 0, 0);
+                potion_door = map.createStaticLayer("potion_door", tileset, 0, 0);
+                enchantment_door = map.createStaticLayer("enchantment_door", tileset, 0, 0);
                 const scenario = map.createStaticLayer("scenario", tileset, 0, 0);
-                // const aboveLayer = map.createStaticLayer("Above Player", tileset, 0, 0);
-
-                console.log(map);
-
-                // /* houseDoor =  */map.findObject(door, function(e) {
-                //     houseDoor = e;
-                //     console.log(e);
-                // });
 
                 // ----------------------------------------------------
 
@@ -83,11 +80,11 @@
                 // ----------------------------------------------------
 
                 cursors = this.input.keyboard.createCursorKeys();
+                actionButton = this.input.keyboard.addKey('SPACE');
 
                 // ----------------------------------------------------
 
                 scenario.setCollisionByProperty({ collision: true});
-                // door.setCollisionByProperty({ collision: true});
                 background.setCollisionByProperty({ collision: true});
                 player.setCollideWorldBounds(true);
 
@@ -117,13 +114,6 @@
                 // });
 
                 // ----------------------------------------------------
-
-                // scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
-
-                // this.physics.add.collider(player, platforms);
-                // this.physics.add.collider(stars, platforms);
-
-                // this.physics.add.overlap(player, stars, collectStar, null, this);
             }
 
             function update ()
@@ -146,21 +136,23 @@
                 } else if (cursors.down.isDown) {
                     player.body.setVelocityY(playerSpeed);
                 }
-                console.log(this.physics.add.overlap(player, door, null, null, this));
-                // if (true == true) {
-                //     console.log("");
-                // }
+
+                var tile = battle_door.getTileAtWorldXY(player.x, player.y);
+                if (tile) {
+                // if (tile.index) {
+                    // console.log(tile);
+                    canEnter = true;
+                    // console.log("overlap");
+                }
+
+                if (canEnter === true && actionButton.isDown) {
+                    console.log(tile);
+                    console.log("Entrou");
+                }
 
                 // Normalize and scale the velocity so that player can't move faster along a diagonal
                 player.body.velocity.normalize().scale(playerSpeed);
             }
-
-            // function collectStar (player, star) {
-            //     star.disableBody(true, true);
-
-            //     score += 10;
-            //     scoreText.setText('Score: ' + score);
-            // }
         </script>
     </body>
 </html>
