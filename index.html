@@ -29,14 +29,13 @@
                 }
             };
 
-            var player;
+            var actionButton;
             var cursors;
             var canEnter = false;
-
-            var actionButton;
-
-            var playerSpeed = 220;
             var doors;
+
+            var player;
+            var playerSpeed = 220;
 
             var game = new Phaser.Game(config);
 
@@ -88,7 +87,7 @@
 
             function update ()
             {
-                var cursors = this.input.keyboard.createCursorKeys();
+                cursors = this.input.keyboard.createCursorKeys();
 
                 // Stop any previous movement from the last frame
                 player.body.setVelocity(0);

@@ -76,7 +76,7 @@ function create ()
 
 function update ()
 {
-    var cursors = this.input.keyboard.createCursorKeys();
+    cursors = this.input.keyboard.createCursorKeys();
 
     // Stop any previous movement from the last frame
     player.body.setVelocity(0);
