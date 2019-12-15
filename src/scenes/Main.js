@@ -82,26 +82,31 @@ class Main extends Phaser.Scene{
         if (canEnter === true) {
             switch (tile.properties.store) {
                 case 'battle':
+                    createTextAndDestroy(240, 200, "Press SPACE to enter the battle arena", this);
                     if (actionButton.isDown) {
                         console.log("entrou na batalha");
                     }
                     break;
                 case 'equipment':
+                    createTextAndDestroy(500, 345, "Press SPACE to enter the shop", this);
                     if (actionButton.isDown) {
                         this.scene.start("equipment_store");
                     }
                     break;
                 case 'magic':
+                    createTextAndDestroy(500, 520, "Press SPACE to enter the shop", this);
                     if (actionButton.isDown) {
                         this.scene.start("magic_store");
                     }
                     break;
                 case 'potion':
+                    createTextAndDestroy(50, 330, "Press SPACE to enter the shop", this);
                     if (actionButton.isDown) {
                         this.scene.start("potion_store");
                     }
                     break;
                 case 'enchantment':
+                    createTextAndDestroy(50, 520, "Press SPACE to enter the shop", this);
                     if (actionButton.isDown) {
                         this.scene.start("enchantment_store");
                     }
