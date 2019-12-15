@@ -9,16 +9,28 @@ var config = {
         }
     },
     backgroundColor: 0x000000,
-    scene: [Menu, Main]
+    scene: [
+        Menu,
+        Main,
+        EquipmentStore,
+        MagicStore,
+        PotionStore,
+        EnchantmentStore,
+    ]
 }
 
 var game = new Phaser.Game(config);
 
-var player = "player";
+var player;
 var cursors;
 var canEnter = false;
 
-var actionButton;
+var backFromStore = false;
+var storePosition = {};
 
-var playerSpeed = 220;
+var actionButton;
+var gameStartButton;
+var goBackButton;
+
+var playerSpeed = 350;
 var doors;
