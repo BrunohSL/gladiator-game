@@ -73,6 +73,12 @@ class Main extends Phaser.Scene{
             canEnter= false;
         }
 
+        if (backFromStore) {
+            player.setPosition(storePosition.x, storePosition.y);
+            backFromStore = false;
+            storePosition = {};
+        }
+
         if (canEnter === true) {
             switch (tile.properties.store) {
                 case 'battle':
@@ -82,22 +88,22 @@ class Main extends Phaser.Scene{
                     break;
                 case 'equipment':
                     if (actionButton.isDown) {
-                        console.log("entrou na loja de armas");
+                        this.scene.start("equipment_store");
                     }
                     break;
                 case 'magic':
                     if (actionButton.isDown) {
-                        console.log("entrou na loja de magica");
+                        this.scene.start("magic_store");
                     }
                     break;
                 case 'potion':
                     if (actionButton.isDown) {
-                        console.log("entrou na loja de poção");
+                        this.scene.start("potion_store");
                     }
                     break;
                 case 'enchantment':
                     if (actionButton.isDown) {
-                        console.log("entrou na loja de encantamentos");
+                        this.scene.start("enchantment_store");
                     }
                     break;
             }
