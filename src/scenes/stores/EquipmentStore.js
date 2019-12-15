@@ -11,6 +11,8 @@ class EquipmentStore extends Phaser.Scene {
         this.add.image(400, 300, 'equipment_store_background');
 
         goBackButton = this.input.keyboard.addKey('Q');
+
+        this.add.text(50, 520, "Press Q to exit the shop", {fontFamily: "courier", color: "black"});
     }
 
     update() {
