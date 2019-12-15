@@ -1,14 +1,14 @@
-class EquipmentStore extends Phaser.Scene {
+class WeaponStore extends Phaser.Scene {
     constructor() {
-        super("equipment_store");
+        super("weapon_store");
     }
 
     preload() {
-        this.load.image('equipment_store_background', './src/assets/store_scenes/equipment_store.png');
+        this.load.image('weapon_store_background', './src/assets/store_scenes/weapon_store.png');
     }
 
     create() {
-        this.add.image(400, 300, 'equipment_store_background');
+        this.add.image(400, 300, 'weapon_store_background');
 
         goBackButton = this.input.keyboard.addKey('Q');
 
@@ -18,7 +18,7 @@ class EquipmentStore extends Phaser.Scene {
     update() {
         if (goBackButton.isDown) {
             backFromStore = true;
-            storePosition = {x: 638, y: 312};
+            storePosition = {x: 175, y: 296};
             this.scene.start("main_game");
         }
     }

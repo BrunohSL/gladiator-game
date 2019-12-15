@@ -1,14 +1,14 @@
-class PotionStore extends Phaser.Scene {
+class ArmorStore extends Phaser.Scene {
     constructor() {
-        super("potion_store");
+        super("armor_store");
     }
 
     preload() {
-        this.load.image('potion_store_background', './src/assets/store_scenes/potion_store.png');
+        this.load.image('armor_store_background', './src/assets/store_scenes/armor_store.png');
     }
 
     create() {
-        this.add.image(400, 300, 'potion_store_background');
+        this.add.image(400, 300, 'armor_store_background');
 
         goBackButton = this.input.keyboard.addKey('Q');
 
@@ -18,7 +18,7 @@ class PotionStore extends Phaser.Scene {
     update() {
         if (goBackButton.isDown) {
             backFromStore = true;
-            storePosition = {x: 175, y: 296};
+            storePosition = {x: 638, y: 312};
             this.scene.start("main_game");
         }
     }

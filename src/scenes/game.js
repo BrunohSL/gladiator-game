@@ -12,9 +12,9 @@ var config = {
     scene: [
         Menu,
         Main,
-        EquipmentStore,
+        WeaponStore,
+        ArmorStore,
         MagicStore,
-        PotionStore,
         EnchantmentStore,
     ]
 }
