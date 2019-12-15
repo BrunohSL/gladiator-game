@@ -36,3 +36,11 @@ var goBackButton;
 
 var playerSpeed = 350;
 var doors;
+
+function createTextAndDestroy(x, y, text, context) {
+    var newText = context.add.text(x, y, text, {fontFamily: "courier", color: "black"});
+
+    setTimeout(function() {
+        newText.destroy();
+    }, 100);
+}
