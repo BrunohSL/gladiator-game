@@ -16,10 +16,6 @@ class MagicStore extends Phaser.Scene {
     }
 
     update() {
-        if (goBackButton.isDown) {
-            backFromStore = true;
-            storePosition = {x: 638, y: 488};
-            this.scene.start("main_game");
-        }
+        listenShopExit(638, 488, this);
     }
 }

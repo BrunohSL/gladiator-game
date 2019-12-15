@@ -16,10 +16,6 @@ class EnchantmentStore extends Phaser.Scene {
     }
 
     update() {
-        if (goBackButton.isDown) {
-            backFromStore = true;
-            storePosition = {x: 175, y: 488};
-            this.scene.start("main_game");
-        }
+        listenShopExit(175, 488, this);
     }
 }

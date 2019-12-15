@@ -44,3 +44,11 @@ function createTextAndDestroy(x, y, text, context) {
         newText.destroy();
     }, 100);
 }
+
+function listenShopExit(x, y, context) {
+    if (goBackButton.isDown) {
+        backFromStore = true;
+        storePosition = {x: x, y: y};
+        context.scene.start("main_game");
+    }
+}

@@ -5,6 +5,7 @@ class WeaponStore extends Phaser.Scene {
 
     preload() {
         this.load.image('weapon_store_background', './src/assets/store_scenes/weapon_store.png');
+        this.load.image('shop_card', './src/assets/store_scenes/shop_card.png');
     }
 
     create() {
@@ -16,10 +17,6 @@ class WeaponStore extends Phaser.Scene {
     }
 
     update() {
-        if (goBackButton.isDown) {
-            backFromStore = true;
-            storePosition = {x: 175, y: 296};
-            this.scene.start("main_game");
-        }
+        listenShopExit(175, 296, this);
     }
 }

@@ -16,10 +16,6 @@ class ArmorStore extends Phaser.Scene {
     }
 
     update() {
-        if (goBackButton.isDown) {
-            backFromStore = true;
-            storePosition = {x: 638, y: 312};
-            this.scene.start("main_game");
-        }
+        listenShopExit(638, 312, this);
     }
 }
