@@ -21,6 +21,8 @@ var config = {
 
 var game = new Phaser.Game(config);
 
+const itemList = new Items();
+
 var player;
 var cursors;
 var canEnter = false;
