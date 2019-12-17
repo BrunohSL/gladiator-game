@@ -17,7 +17,7 @@ class WeaponStore extends Phaser.Scene {
         var storeGroupItems = itemList.getItemsByGroup("weapons");
         var itemsSortedByPage = itemList.sortItemsByPage(storeGroupItems);
 
-        this.add.image(287, 300, "shop_card");
+        shopClass.createCards(itemsSortedByPage, this);
     }
 
     update() {

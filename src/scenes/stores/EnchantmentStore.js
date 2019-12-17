@@ -9,10 +9,14 @@ class EnchantmentStore extends Phaser.Scene {
 
     create() {
         this.add.image(400, 300, 'enchantment_store_background');
+        this.add.text(50, 520, "Press Q to exit the shop", {fontFamily: "courier", color: "black"});
 
         goBackButton = this.input.keyboard.addKey('Q');
 
-        this.add.text(50, 520, "Press Q to exit the shop", {fontFamily: "courier", color: "black"});
+        // var storeGroupItems = itemList.getItemsByGroup("potions");
+        // var itemsSortedByPage = itemList.sortItemsByPage(storeGroupItems);
+
+        // shopClass.createCards(itemsSortedByPage, this);
     }
 
     update() {
