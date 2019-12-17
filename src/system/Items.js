@@ -47,31 +47,31 @@ class Items {
 const items = {
     "armors": {
         "0": {
-            "name": "weak_helmet",
+            "name": "Weak Helmet",
             "defence": 3,
             "properties": "",
             "price": 300,
         },
         "1": {
-            "name": "weak_armor",
+            "name": "Weak Armor",
             "defence": 5,
             "properties": "",
             "price": 400,
         },
         "2": {
-            "name": "weak_gloves",
+            "name": "Weak Gloves",
             "defence": 1,
             "properties": "",
             "price": 70,
         },
         "3": {
-            "name": "weak_pants",
+            "name": "Weak Pants",
             "defence": 2,
             "properties": "",
             "price": 200,
         },
         "4": {
-            "name": "weak_boots",
+            "name": "Weak Boots",
             "defence": 1,
             "properties": "",
             "price": 150,
@@ -80,43 +80,43 @@ const items = {
 
     "weapons": {
         "0": {
-            "name": "wood_sword",
+            "name": "Wood Sword",
             "attack": 1,
             "properties": "",
             "price": 250,
         },
         "1": {
-            "name": "wood_dagger",
+            "name": "Wood Dagger",
             "attack": 1,
             "properties": "",
             "price": 150,
         },
         "2": {
-            "name": "wood_axe",
+            "name": "Wood Axe",
             "attack": 1,
             "properties": "",
             "price": 300,
         },
         "3": {
-            "name": "wood_staff",
+            "name": "Woof Staff",
             "attack": 1,
             "properties": "",
             "price": 100,
         },
         "4": {
-            "name": "dumb_book",
+            "name": "Dumb Book",
             "attack": 1,
             "properties": "",
             "price": 200,
         },
         "5": {
-            "name": "wood_bow",
+            "name": "Wood Bow",
             "attack": 1,
             "properties": "",
             "price": 320,
         },
         "6": {
-            "name": "wood_crossbow",
+            "name": "Wood Crossbow",
             "attack": 1,
             "properties": "",
             "price": 380,
@@ -125,12 +125,12 @@ const items = {
 
     "potions": {
         "0": {
-            "name": "small_hp_potion",
+            "name": "HP Potion",
             "restore": 10,
             "price": 50,
         },
         "1": {
-            "name": "small_mp_potion",
+            "name": "MP Potion",
             "restore": 10,
             "price": 50,
         },

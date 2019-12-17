@@ -11,7 +11,9 @@ class WeaponStore extends Phaser.Scene {
 
     create() {
         this.add.image(400, 300, 'weapon_store_background');
-        this.add.text(50, 520, "Press Q to exit the shop", {fontFamily: "courier", color: "black"});
+        this.add.text(50, 493, "Use the arrows to select the item", {fontFamily: "courier", color: "black"});
+        this.add.text(50, 523, "Press N to next page", {fontFamily: "courier", color: "black"});
+        this.add.text(50, 553, "Press Q to exit the shop", {fontFamily: "courier", color: "black"});
 
         goBackButton = this.input.keyboard.addKey('Q');
 
