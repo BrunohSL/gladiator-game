@@ -30,6 +30,11 @@ var canEnter = false;
 
 var backFromStore = false;
 var storePosition = {};
+var shopCards;
+var actualPage;
+var actualItem;
+var cardInfo;
+var oldCardInfo;
 
 var actionButton;
 var gameStartButton;
@@ -37,11 +42,6 @@ var goBackButton;
 var nextPageButton;
 var upButton;
 var downButton;
-
-var itemLoaded = false;
-
-var actualPage = 0;
-var actualItem = 0;
 
 var playerSpeed = 350;
 var doors;
