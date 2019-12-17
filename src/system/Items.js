@@ -123,17 +123,15 @@ const items = {
         },
     },
 
-    "potion": {
+    "potions": {
         "0": {
             "name": "small_hp_potion",
-            "restore_hp": 10,
-            "restore_mp": 0,
+            "restore": 10,
             "price": 50,
         },
         "1": {
             "name": "small_mp_potion",
-            "restore_hp": 0,
-            "restore_mp": 10,
+            "restore": 10,
             "price": 50,
         },
     }

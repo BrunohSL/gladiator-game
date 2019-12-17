@@ -5,6 +5,7 @@ class EnchantmentStore extends Phaser.Scene {
 
     preload() {
         this.load.image('enchantment_store_background', './src/assets/store_scenes/enchantment_store.png');
+        this.load.image('shop_card', './src/assets/store_scenes/shop_card.png');
     }
 
     create() {
@@ -13,10 +14,12 @@ class EnchantmentStore extends Phaser.Scene {
 
         goBackButton = this.input.keyboard.addKey('Q');
 
-        // var storeGroupItems = itemList.getItemsByGroup("potions");
-        // var itemsSortedByPage = itemList.sortItemsByPage(storeGroupItems);
+        var storeGroupItems = itemList.getItemsByGroup("potions");
+        console.log(storeGroupItems);
+        var itemsSortedByPage = itemList.sortItemsByPage(storeGroupItems);
+        console.log(itemsSortedByPage);
 
-        // shopClass.createCards(itemsSortedByPage, this);
+        shopClass.createCards(itemsSortedByPage, this);
     }
 
     update() {

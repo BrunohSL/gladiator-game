@@ -5,6 +5,7 @@ class ArmorStore extends Phaser.Scene {
 
     preload() {
         this.load.image('armor_store_background', './src/assets/store_scenes/armor_store.png');
+        this.load.image('shop_card', './src/assets/store_scenes/shop_card.png');
     }
 
     create() {
@@ -13,10 +14,10 @@ class ArmorStore extends Phaser.Scene {
 
         goBackButton = this.input.keyboard.addKey('Q');
 
-        // var storeGroupItems = itemList.getItemsByGroup("armors");
-        // var itemsSortedByPage = itemList.sortItemsByPage(storeGroupItems);
+        var storeGroupItems = itemList.getItemsByGroup("armors");
+        var itemsSortedByPage = itemList.sortItemsByPage(storeGroupItems);
 
-        // shopClass.createCards(itemsSortedByPage, this);
+        shopClass.createCards(itemsSortedByPage, this);
     }
 
     update() {

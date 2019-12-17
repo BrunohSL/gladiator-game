@@ -5,6 +5,7 @@ class MagicStore extends Phaser.Scene {
 
     preload() {
         this.load.image('magic_store_background', './src/assets/store_scenes/magic_store.png');
+        this.load.image('shop_card', './src/assets/store_scenes/shop_card.png');
     }
 
     create() {

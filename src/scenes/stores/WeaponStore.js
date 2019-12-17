@@ -6,6 +6,7 @@ class WeaponStore extends Phaser.Scene {
     preload() {
         this.load.image('weapon_store_background', './src/assets/store_scenes/weapon_store.png');
         this.load.image('shop_card', './src/assets/store_scenes/shop_card.png');
+        this.load.image('selected_shop_card', './src/assets/store_scenes/selected_shop_card.png');
     }
 
     create() {
