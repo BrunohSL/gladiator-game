@@ -14,19 +14,13 @@ class WeaponStore extends Phaser.Scene {
 
         goBackButton = this.input.keyboard.addKey('Q');
 
-        storeItems = itemList.getItemsByGroup("weapons");
-        itemsSortedByPage = itemList.sortItemsByPage(storeItems);
+        var storeGroupItems = itemList.getItemsByGroup("weapons");
+        var itemsSortedByPage = itemList.sortItemsByPage(storeGroupItems);
+
+        this.add.image(287, 300, "shop_card");
     }
 
     update() {
         listenShopExit(175, 296, this);
-
-        if (!itemLoaded) {
-            createShopList(storeItems, this);
-            this.add.image(287, 300, "shop_card");
-            this.add.image(287, 350, "shop_card");
-
-            itemLoaded = true;
-        }
     }
 }
