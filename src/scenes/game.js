@@ -34,6 +34,9 @@ var storePosition = {};
 var actionButton;
 var gameStartButton;
 var goBackButton;
+var nextPageButton;
+var upButton;
+var downButton;
 
 var itemLoaded = false;
 

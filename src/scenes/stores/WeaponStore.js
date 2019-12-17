@@ -16,6 +16,9 @@ class WeaponStore extends Phaser.Scene {
         this.add.text(50, 553, "Press Q to exit the shop", {fontFamily: "courier", color: "black"});
 
         goBackButton = this.input.keyboard.addKey('Q');
+        nextPageButton = this.input.keyboard.addKey('N');
+        upButton = this.input.keyboard.addKey('UP');
+        downButton = this.input.keyboard.addKey('DOWN');
 
         var storeGroupItems = itemList.getItemsByGroup("weapons");
         var itemsSortedByPage = itemList.sortItemsByPage(storeGroupItems);
