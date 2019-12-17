@@ -15,8 +15,36 @@ class Items {
         return items[group][id];
     }
 
-    getItemsFromGroup(group) {
+    getItemsByGroup(group) {
+        if (!items[group]) {
+            return "Group not found";
+        }
+
         return items[group];
+    }
+
+    sortItemsByPage(items) {
+        var pageSize = 6;
+        var paginatedItems = [];
+        var pageNumber = 0;
+
+        paginatedItems[pageNumber] = [];
+
+        for (var key in items) {
+            console.log("key: " + key + " | value: " + items[key]);
+
+            console.log(items[key].name);
+            console.log(paginatedItems.length);
+            console.log(paginatedItems[pageNumber].length);
+
+            if (paginatedItems.length == 0 || paginatedItems[pageNumber].length < pageSize) {
+                paginatedItems[pageNumber] += items[key];
+            };
+        }
+        console.log(paginatedItems);
+
+        // return paginatedItems;
+        return "Array de itens paginados";
     }
 }
 
@@ -47,57 +75,56 @@ const items = {
             "defence": 1,
             "properties": "",
         },
-
     },
 
     "weapons": {
         "0": {
-            "id": "wood_sword",
+            "name": "wood_sword",
             "attack": 1,
             "properties": "",
         },
         "1": {
-            "id": "wood_dagger",
+            "name": "wood_dagger",
             "attack": 1,
             "properties": "",
         },
         "2": {
-            "id": "wood_axe",
+            "name": "wood_axe",
             "attack": 1,
             "properties": "",
         },
         "3": {
-            "id": "wood_staff",
+            "name": "wood_staff",
             "attack": 1,
             "properties": "",
         },
         "4": {
-            "id": "dumb_book",
+            "name": "dumb_book",
             "attack": 1,
             "properties": "",
         },
         "5": {
-            "id": "wood_bow",
+            "name": "wood_bow",
             "attack": 1,
             "properties": "",
         },
         "6": {
-            "id": "wood_crossbow",
+            "name": "wood_crossbow",
             "attack": 1,
             "properties": "",
         },
     },
 
-    "usable": {
+    "potion": {
         "0": {
-            "id": "small_hp_potion",
+            "name": "small_hp_potion",
             "restore_hp": 10,
             "restore_mp": 0,
         },
         "1": {
-            "id": "small_mp_potion",
+            "name": "small_mp_potion",
             "restore_hp": 0,
             "restore_mp": 10,
         },
-    },
+    }
 };
