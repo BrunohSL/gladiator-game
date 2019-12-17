@@ -50,26 +50,31 @@ const items = {
             "name": "weak_helmet",
             "defence": 3,
             "properties": "",
+            "price": 300,
         },
         "1": {
             "name": "weak_armor",
             "defence": 5,
             "properties": "",
+            "price": 400,
         },
         "2": {
             "name": "weak_gloves",
             "defence": 1,
             "properties": "",
+            "price": 70,
         },
         "3": {
             "name": "weak_pants",
             "defence": 2,
             "properties": "",
+            "price": 200,
         },
         "4": {
             "name": "weak_boots",
             "defence": 1,
             "properties": "",
+            "price": 150,
         },
     },
 
@@ -78,36 +83,43 @@ const items = {
             "name": "wood_sword",
             "attack": 1,
             "properties": "",
+            "price": 250,
         },
         "1": {
             "name": "wood_dagger",
             "attack": 1,
             "properties": "",
+            "price": 150,
         },
         "2": {
             "name": "wood_axe",
             "attack": 1,
             "properties": "",
+            "price": 300,
         },
         "3": {
             "name": "wood_staff",
             "attack": 1,
             "properties": "",
+            "price": 100,
         },
         "4": {
             "name": "dumb_book",
             "attack": 1,
             "properties": "",
+            "price": 200,
         },
         "5": {
             "name": "wood_bow",
             "attack": 1,
             "properties": "",
+            "price": 320,
         },
         "6": {
             "name": "wood_crossbow",
             "attack": 1,
             "properties": "",
+            "price": 380,
         },
     },
 
@@ -116,11 +128,13 @@ const items = {
             "name": "small_hp_potion",
             "restore_hp": 10,
             "restore_mp": 0,
+            "price": 50,
         },
         "1": {
             "name": "small_mp_potion",
             "restore_hp": 0,
             "restore_mp": 10,
+            "price": 50,
         },
     }
 };
