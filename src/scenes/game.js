@@ -22,6 +22,7 @@ var config = {
 var game = new Phaser.Game(config);
 
 const itemList = new Items();
+const shopClass = new Shop();
 
 var player;
 var cursors;
@@ -35,6 +36,9 @@ var gameStartButton;
 var goBackButton;
 
 var itemLoaded = false;
+
+var actualPage = 0;
+var actualItem = 0;
 
 var playerSpeed = 350;
 var doors;
