@@ -31,20 +31,16 @@ class Items {
         paginatedItems[pageNumber] = [];
 
         for (var key in items) {
-            console.log("key: " + key + " | value: " + items[key]);
-
-            console.log(items[key].name);
-            console.log(paginatedItems.length);
-            console.log(paginatedItems[pageNumber].length);
-
-            if (paginatedItems.length == 0 || paginatedItems[pageNumber].length < pageSize) {
-                paginatedItems[pageNumber] += items[key];
+            if (paginatedItems[pageNumber].length < pageSize) {
+                paginatedItems[pageNumber].push(items[key]);
+            } else {
+                pageNumber++;
+                paginatedItems[pageNumber] = [];
+                paginatedItems[pageNumber].push(items[key]);
             };
         }
-        console.log(paginatedItems);
 
-        // return paginatedItems;
-        return "Array de itens paginados";
+        return paginatedItems;
     }
 }
 
