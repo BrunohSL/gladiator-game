@@ -34,6 +34,10 @@ var actionButton;
 var gameStartButton;
 var goBackButton;
 
+var itemLoaded = false;
+var storeItems;
+var itemsSortedByPage;
+
 var playerSpeed = 350;
 var doors;
 
@@ -51,4 +55,8 @@ function listenShopExit(x, y, context) {
         storePosition = {x: x, y: y};
         context.scene.start("main_game");
     }
+}
+
+function createShopList(itemList, context) {
+    console.log(itemList);
 }
