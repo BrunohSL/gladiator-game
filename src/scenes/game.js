@@ -33,13 +33,15 @@ var storePosition = {};
 var shopCards;
 var actualPage;
 var actualItem;
-var cardInfo;
+var actualCardInfo;
 var oldCardInfo;
+var itemsSortedByPage;
 
 var actionButton;
 var gameStartButton;
 var goBackButton;
 var nextPageButton;
+var previousPageButton;
 var upButton;
 var downButton;
 
