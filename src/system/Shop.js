@@ -3,11 +3,9 @@ class Shop {
         var position = this.createCardPositionObject(300, 170, 55, 160);
 
         var shopItemArray = [];
-
         var itemCount = 0;
-        var page = 0
 
-        itemsByPage[page].forEach(item => {
+        itemsByPage[actualPage].forEach(item => {
             var text =  this.createText(item, context.constructor.name);
             if (position.cardStartPoint.x == 300 && position.cardStartPoint.y == 170) {
                 shopItemArray[itemCount] = this.createFullCard(position, 'selected_shop_card', text, "white", context);
