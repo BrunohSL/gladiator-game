@@ -28,115 +28,40 @@ class WeaponStore extends Phaser.Scene {
         var storeGroupItems = itemList.getItemsByGroup("weapons");
         itemsSortedByPage = itemList.sortItemsByPage(storeGroupItems);
 
+        console.log(itemsSortedByPage);
+
         shopCards = shopClass.createCards(itemsSortedByPage, this);
     }
 
     update() {
         listenShopExit(175, 296, this);
+
+        if (downButton.isDown && actualItem >= itemsSortedByPage[actualPage].length -1) {
+            console.log("Não tem mais item");
+        } else {
+            if (this.input.keyboard.checkDown(downButton, 500)) {
+                nextItem(this);
+            }
+        }
+
         if (upButton.isDown && actualItem == 0) {
             console.log("Não pode subir mais");
         } else {
             if (this.input.keyboard.checkDown(upButton, 500)) {
-                this.nextItem();
-            }
-        }
-
-        if (downButton.isDown && actualItem >= itemsSortedByPage[actualPage].length -1) {
-            console.log("Não pode descer mais");
-        } else {
-            if (this.input.keyboard.checkDown(downButton, 500)) {
-                this.previousItem();
+                previousItem(this);
             }
         }
 
         if (itemsSortedByPage.length > actualPage + 1) {
             if (this.input.keyboard.checkDown(nextPageButton, 500)) {
-                this.nextPage();
+                nextPage(this);
             }
         }
 
         if ((actualPage) && (actualPage != 0)) {
             if (this.input.keyboard.checkDown(previousPageButton, 500)) {
-                this.previousPage();
+                previousPage(this);
             }
         }
-    }
-
-    getCardInfo(card) {
-        var position = shopClass.createCardPositionObject(
-            card.image.x,
-            card.image.y,
-            card.text.x,
-            card.text.y,
-        );
-
-        var cardInfo = {
-            "position": position,
-            "text": card.text._text,
-        };
-
-        return cardInfo;
-    }
-
-    nextItem() {
-        actualItem--;
-
-        oldCardInfo = this.getCardInfo(shopCards[actualItem + 1]);
-        actualCardInfo = this.getCardInfo(shopCards[actualItem]);
-
-        shopCards[actualItem +1].image.destroy();
-        shopCards[actualItem +1].text.destroy();
-        shopCards[actualItem +1] = shopClass.createFullCard(oldCardInfo.position, "shop_card", oldCardInfo.text, "black", this);
-
-        shopCards[actualItem].image.destroy();
-        shopCards[actualItem].text.destroy();
-        shopCards[actualItem] = shopClass.createFullCard(actualCardInfo.position, "selected_shop_card", actualCardInfo.text, "white", this);
-    }
-
-    previousItem() {
-        actualItem++;
-
-        oldCardInfo = this.getCardInfo(shopCards[actualItem - 1]);
-        actualCardInfo = this.getCardInfo(shopCards[actualItem]);
-
-        shopCards[actualItem -1].image.destroy();
-        shopCards[actualItem -1].text.destroy();
-        shopCards[actualItem -1] = shopClass.createFullCard(oldCardInfo.position, "shop_card", oldCardInfo.text, "black", this);
-
-        shopCards[actualItem].image.destroy();
-        shopCards[actualItem].text.destroy();
-        shopCards[actualItem] = shopClass.createFullCard(actualCardInfo.position, "selected_shop_card", actualCardInfo.text, "white", this);
-    }
-
-    nextPage() {
-        actualItem = 0;
-        oldCardInfo = "";
-        actualCardInfo = "";
-        actualPage++;
-
-        shopCards.forEach(card => {
-            card.image.destroy();
-            card.text.destroy();
-        });
-
-        shopCards = "";
-
-        shopCards = shopClass.createCards(itemsSortedByPage, this);
-    }
-
-    previousPage() {
-        actualItem = 0;
-        oldCardInfo = "";
-        actualCardInfo = "";
-        actualPage--;
-
-        shopCards.forEach(card => {
-            card.image.destroy();
-            card.text.destroy();
-        });
-
-        shopCards = "";
-
-        shopCards = shopClass.createCards(itemsSortedByPage, this);
     }
 }
