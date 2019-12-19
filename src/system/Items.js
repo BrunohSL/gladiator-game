@@ -121,6 +121,42 @@ const items = {
             "properties": "",
             "price": 380,
         },
+        "7": {
+            "name": "teste 1",
+            "attack": 1,
+            "properties": "",
+            "price": 380,
+        },
+        "8": {
+            "name": "teste 2",
+            "attack": 1,
+            "properties": "",
+            "price": 380,
+        },
+        "9": {
+            "name": "teste 3",
+            "attack": 1,
+            "properties": "",
+            "price": 380,
+        },
+        "10": {
+            "name": "teste 4",
+            "attack": 1,
+            "properties": "",
+            "price": 380,
+        },
+        "11": {
+            "name": "teste 5",
+            "attack": 1,
+            "properties": "",
+            "price": 380,
+        },
+        "12": {
+            "name": "teste 6",
+            "attack": 1,
+            "properties": "",
+            "price": 380,
+        },
     },
 
     "potions": {
