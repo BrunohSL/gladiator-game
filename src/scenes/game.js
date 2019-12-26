@@ -48,22 +48,23 @@ var upButton;
 var downButton;
 
 var newCharButton;
+var saveCharButton;
 var loadCharButton;
 var deleteCharButton;
 
 var playerSpeed = 350;
 var doors;
 
-function saveGame(player, saveName) {
-    localStorage.setItem(saveName, JSON.stringify(player));
+function saveGame(player, saveSlot) {
+    localStorage.setItem(saveSlot, JSON.stringify(player));
 }
 
-function loadGame(saveName) {
-        return JSON.parse(localStorage.getItem(saveName));
+function loadGame(saveSlot) {
+    return JSON.parse(localStorage.getItem(saveSlot));
 }
 
-function deleteGame(saveName) {
-    localStorage.removeItem(saveName);
+function deleteGame(saveSlot) {
+    localStorage.removeItem(saveSlot);
 }
 
 function createTextAndDestroy(x, y, text, context) {
