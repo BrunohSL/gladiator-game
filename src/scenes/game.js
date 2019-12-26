@@ -48,9 +48,23 @@ var upButton;
 var downButton;
 
 var newCharButton;
+var loadCharButton;
+var deleteCharButton;
 
 var playerSpeed = 350;
 var doors;
+
+function saveGame(player, saveName) {
+    localStorage.setItem(saveName, JSON.stringify(player));
+}
+
+function loadGame(saveName) {
+        return JSON.parse(localStorage.getItem(saveName));
+}
+
+function deleteGame(saveName) {
+    localStorage.removeItem(saveName);
+}
 
 function createTextAndDestroy(x, y, text, context) {
     var newText = context.add.text(x, y, text, {fontFamily: "courier", color: "black"});

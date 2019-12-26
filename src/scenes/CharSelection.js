@@ -20,11 +20,31 @@ class CharSelection extends Phaser.Scene {
         // this.add.text(300, 300, "Press SPACE to select");
 
         gameStartButton = this.input.keyboard.addKey('SPACE');
+        newCharButton = this.input.keyboard.addKey('N');
+        loadCharButton = this.input.keyboard.addKey('L');
+        deleteCharButton = this.input.keyboard.addKey('D');
+
+        character = new Character(100, 100, 10, 5);
     }
 
     update() {
         if (gameStartButton.isDown) {
             this.scene.start("main_game");
+        }
+
+        if (this.input.keyboard.checkDown(newCharButton, 2000)) {
+            saveGame(character, 'save_0');
+            console.log(localStorage);
+        }
+
+        if (this.input.keyboard.checkDown(loadCharButton, 2000)) {
+            var teste = loadGame('save_0');
+            console.log(teste);
+        }
+
+        if (this.input.keyboard.checkDown(deleteCharButton, 2000)) {
+            deleteGame('save_0');
+            console.log(localStorage);
         }
     }
 }

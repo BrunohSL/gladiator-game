@@ -34,7 +34,6 @@ class Main extends Phaser.Scene{
 
         cursors = this.input.keyboard.createCursorKeys();
         actionButton = this.input.keyboard.addKey('SPACE');
-        newCharButton = this.input.keyboard.addKey('N');
 
         // ----------------------------------------------------
 
@@ -44,17 +43,9 @@ class Main extends Phaser.Scene{
 
         this.physics.add.collider(player, scenario);
         this.physics.add.collider(player, background);
-
-        character = new Character(100, 100, 100, 100, 10, 5);
-
-        console.log(character);
     }
 
     update() {
-        if (this.input.keyboard.checkDown(newCharButton, 2000)) {
-            character.setMaxHp(20);
-            console.log(character);
-        }
         cursors = this.input.keyboard.createCursorKeys();
 
         // Stop any previous movement from the last frame
