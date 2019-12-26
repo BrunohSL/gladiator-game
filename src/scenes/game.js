@@ -11,6 +11,7 @@ var config = {
     backgroundColor: 0x000000,
     scene: [
         Menu,
+        CharSelection,
         Main,
         WeaponStore,
         ArmorStore,
@@ -24,6 +25,7 @@ var game = new Phaser.Game(config);
 const itemList = new Items();
 const shopClass = new Shop();
 
+var character;
 var player;
 var cursors;
 var canEnter = false;
@@ -44,6 +46,8 @@ var nextPageButton;
 var previousPageButton;
 var upButton;
 var downButton;
+
+var newCharButton;
 
 var playerSpeed = 350;
 var doors;
