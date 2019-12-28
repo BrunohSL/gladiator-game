@@ -28,7 +28,7 @@ class Character {
         this.atk = atk;
     }
 
-    setdef(def) {
+    setDef(def) {
         this.def = def;
     }
 
@@ -52,7 +52,7 @@ class Character {
         return this.maxHp;
     }
 
-    getdef() {
+    getDef() {
         return this.maxHp;
     }
 }

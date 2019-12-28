@@ -9,11 +9,9 @@ class Shop {
             var text =  this.createText(item, context.constructor.name);
             if (position.cardStartPoint.x == 300 && position.cardStartPoint.y == 170) {
                 shopItemArray[itemCount] = this.createFullCard(position, 'selected_shop_card', text, "white", context);
-
                 itemCount++;
             } else {
                 shopItemArray[itemCount] = this.createFullCard(position, 'shop_card', text, "black", context);
-
                 itemCount++;
             }
 
@@ -55,6 +53,7 @@ class Shop {
 
     createFullCard(position, image, text, textColor, context) {
         var fullCard = [];
+
         fullCard["image"] = context.add.image(position.cardStartPoint.x, position.cardStartPoint.y, image);
         fullCard["text"] = context.add.text(position.textStartPoint.x, position.textStartPoint.y, text, {fontFamily: "courier", color: textColor});
 

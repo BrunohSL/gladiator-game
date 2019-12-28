@@ -28,7 +28,7 @@ class CharSelection extends Phaser.Scene {
 
         var cards = this.createCharacterCards();
 
-        this.createCharacterText('save_0');
+        console.log(cards);
     }
 
     update() {
@@ -39,8 +39,12 @@ class CharSelection extends Phaser.Scene {
         if (this.input.keyboard.checkDown(saveCharButton, 2000)) {
             if (localStorage.length < 3) {
                 saveGame(character, 'save_0');
-                // saveGame(character, 'save_1');
-                // saveGame(character, 'save_2');
+                character.setAtk(20);
+                character.setDef(40);
+                saveGame(character, 'save_1');
+                character.setAtk(50);
+                character.setDef(50);
+                saveGame(character, 'save_2');
             }
         }
 
@@ -60,59 +64,80 @@ class CharSelection extends Phaser.Scene {
         var info = loadGame(saveSlot);
 
         var text = "HP: " + info.actualHp + "\\" + info.maxHp
-                    + "\nMP: " + info.actualMp + "\\" + info.maxMp
-                    + "\nAtk: " + info.atk
-                    + "\nDef: " + info.def;
+        + "\nMP: " + info.actualMp + "\\" + info.maxMp
+        + "\nAtk: " + info.atk
+        + "\nDef: " + info.def;
 
-        this.add.text(120, 400, text, {fontFamily: "courier", color: "black"});
+        return text;
     }
 
-    createCharacterCardPositionObject(imageX, imageY) {
+    createCharacterCardPositionObject(imageX, imageY, textX, textY) {
         return {
             cardStartPoint: {
                 "x": imageX,
                 "y": imageY,
             },
-            // textStartPoint: {
-            //     "x": textX,
-            //     "y": textY,
-            // },
+            textStartPoint: {
+                "x": textX,
+                "y": textY,
+            },
         }
     }
 
     createCharacterCards() {
-        var position = this.createCharacterCardPositionObject(190, 370);
+        var position = this.createCharacterCardPositionObject(190, 370, 120, 400);
 
-        // var shopItemArray = [];
+        var characterCardsArray = [];
+        var counter = 0;
+
         for (var key in localStorage) {
             if (/save/g.test(key)) {
+                var text = this.createCharacterText(key);
+
                 if (position.cardStartPoint.x == 190 && position.cardStartPoint.y == 370) {
-                    this.add.image(position.cardStartPoint.x, position.cardStartPoint.y, 'selected_character_card');
+                    characterCardsArray[counter] = this.createFullCharacterCard(position, 'selected_character_card', text, "black", this);
                 } else {
-                    this.add.image(position.cardStartPoint.x, position.cardStartPoint.y, 'character_card');
+                    characterCardsArray[counter] = this.createFullCharacterCard(position, 'character_card', text, "black", this);
                 }
 
                 position.cardStartPoint.x  = position.cardStartPoint.x + 220;
-                // position.textStartPoint.x  = position.textStartPoint.x + 220;
+                position.textStartPoint.x  = position.textStartPoint.x + 220;
+                counter++;
             }
         }
 
-        this.checkForEmptyCharacter(position);
+        this.checkForEmptyCharacter(position, characterCardsArray, counter);
+
+        return characterCardsArray;
     }
 
-    checkForEmptyCharacter(position) {
+    createFullCharacterCard(position, image, text, textColor, context) {
+        var fullCard = [];
+
+        fullCard["image"] = context.add.image(position.cardStartPoint.x, position.cardStartPoint.y, image);
+        fullCard["text"] = context.add.text(position.textStartPoint.x, position.textStartPoint.y, text, {fontFamily: "courier", color: textColor});
+
+        return fullCard;
+    }
+
+    checkForEmptyCharacter(position, characterCardsArray, counter) {
         var empty = 3 - localStorage.length;
 
         if (empty > 0) {
             if (empty === 3) {
-                this.add.image(190, 370, 'selected_new_character_card');
-                position.cardStartPoint.x  = 190 + 220;
-                empty--;
-            }
-            for (var i = empty; i > 0; i--) {
-                this.add.image(position.cardStartPoint.x, position.cardStartPoint.y, 'new_character_card');
+                characterCardsArray[counter] = this.add.image(190, 370, 'selected_new_character_card');
                 position.cardStartPoint.x  = position.cardStartPoint.x + 220;
+                empty--;
+                counter++;
+            }
+
+            for (var i = empty; i > 0; i--) {
+                characterCardsArray[counter] = this.add.image(position.cardStartPoint.x, position.cardStartPoint.y, 'new_character_card');
+                position.cardStartPoint.x  = position.cardStartPoint.x + 220;
+                counter++;
             }
         }
+
+        return characterCardsArray;
     }
 }
