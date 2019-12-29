@@ -37,22 +37,22 @@ class Character {
     }
 
     getActualHp() {
-        return this.maxHp;
+        return this.actualHp;
     }
 
     getMaxMp() {
-        return this.maxHp;
+        return this.maxMp;
     }
 
     getActualMp() {
-        return this.maxHp;
+        return this.actualMp;
     }
 
     getAtk() {
-        return this.maxHp;
+        return this.atk;
     }
 
     getDef() {
-        return this.maxHp;
+        return this.def;
     }
 }
