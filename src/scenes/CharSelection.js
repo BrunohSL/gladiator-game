@@ -13,22 +13,19 @@ class CharSelection extends Phaser.Scene {
 
     create() {
         this.add.image(400, 300, 'character_selection_background');
-        // this.add.image(190, 370, 'selected_character_card');
-        // this.add.image(410, 370, 'character_card');
-        // this.add.image(630, 360, 'selected_new_character_card');
-        // this.add.text(300, 300, "Press SPACE to select");
 
         gameStartButton = this.input.keyboard.addKey('SPACE');
         newCharButton = this.input.keyboard.addKey('N');
         saveCharButton = this.input.keyboard.addKey('S');
         loadCharButton = this.input.keyboard.addKey('L');
         deleteCharButton = this.input.keyboard.addKey('D');
+        nextCharacterButton = this.input.keyboard.addKey('X');
+        previousCharacterButton = this.input.keyboard.addKey('Z');
 
         character = new Character(100, 100, 10, 5);
+        actualItem = 0;
 
-        var cards = this.createCharacterCards();
-
-        console.log(cards);
+        characterList = this.createCharacterCards();
     }
 
     update() {
@@ -39,12 +36,15 @@ class CharSelection extends Phaser.Scene {
         if (this.input.keyboard.checkDown(saveCharButton, 2000)) {
             if (localStorage.length < 3) {
                 saveGame(character, 'save_0');
+                console.log("Salvou o player: " + character);
                 character.setAtk(20);
                 character.setDef(40);
                 saveGame(character, 'save_1');
-                character.setAtk(50);
-                character.setDef(50);
-                saveGame(character, 'save_2');
+                // console.log("Salvou o player: " + character);
+                // character.setAtk(50);
+                // character.setDef(50);
+                // saveGame(character, 'save_2');
+                // console.log("Salvou o player: " + character);
             }
         }
 
@@ -53,11 +53,56 @@ class CharSelection extends Phaser.Scene {
             console.log("Carregou o jogo: " + characterInfo);
         }
 
+        if (nextCharacterButton.isDown && actualItem < 2) {
+            if (this.input.keyboard.checkDown(nextCharacterButton, 500)) {
+                this.rightCharacter();
+            }
+        }
+
+        if (previousCharacterButton.isDown && actualItem > 0) {
+            if (this.input.keyboard.checkDown(previousCharacterButton, 500)) {
+                this.leftCharacter();
+            }
+        }
+
         if (this.input.keyboard.checkDown(deleteCharButton, 2000)) {
             deleteGame('save_0');
+            console.log("Deletou");
             deleteGame('save_1');
+            console.log("Deletou");
             deleteGame('save_2');
+            console.log("Deletou");
         }
+    }
+
+    rightCharacter() {
+        actualItem++;
+
+        oldCardInfo = getCardInfo(characterList[actualItem - 1]);
+        actualCardInfo = getCardInfo(characterList[actualItem]);
+
+        characterList[actualItem -1].image.destroy();
+        characterList[actualItem -1].text.destroy();
+        characterList[actualItem -1] = this.createFullCharacterCard(oldCardInfo.position, 'character_card', oldCardInfo.text, "black", this)
+
+        characterList[actualItem].image.destroy();
+        characterList[actualItem].text.destroy();
+        characterList[actualItem] = this.createFullCharacterCard(actualCardInfo.position, "selected_character_card", actualCardInfo.text, "black", this);
+    }
+
+    leftCharacter() {
+        actualItem--;
+
+        oldCardInfo = getCardInfo(characterList[actualItem + 1]);
+        actualCardInfo = getCardInfo(characterList[actualItem]);
+
+        characterList[actualItem +1].image.destroy();
+        characterList[actualItem +1].text.destroy();
+        characterList[actualItem +1] = this.createFullCharacterCard(oldCardInfo.position, 'character_card', oldCardInfo.text, "black", this)
+
+        characterList[actualItem].image.destroy();
+        characterList[actualItem].text.destroy();
+        characterList[actualItem] = this.createFullCharacterCard(actualCardInfo.position, "selected_character_card", actualCardInfo.text, "black", this);
     }
 
     createCharacterText(saveSlot) {
