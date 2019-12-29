@@ -19,16 +19,14 @@ class WeaponStore extends Phaser.Scene {
         actualItem = 0;
         actualPage = 0;
 
-        upButton = this.input.keyboard.addKey('UP');
+        nextItemButton = this.input.keyboard.addKey('UP');
         goBackButton = this.input.keyboard.addKey('Q');
-        downButton = this.input.keyboard.addKey('DOWN');
+        previousItemButton = this.input.keyboard.addKey('DOWN');
         nextPageButton = this.input.keyboard.addKey('X');
         previousPageButton = this.input.keyboard.addKey('Z');
 
         var storeGroupItems = itemList.getItemsByGroup("weapons");
         itemsSortedByPage = itemList.sortItemsByPage(storeGroupItems);
-
-        console.log(itemsSortedByPage);
 
         shopCards = shopClass.createCards(itemsSortedByPage, this);
     }
@@ -36,18 +34,18 @@ class WeaponStore extends Phaser.Scene {
     update() {
         listenShopExit(175, 296, this);
 
-        if (downButton.isDown && actualItem >= itemsSortedByPage[actualPage].length -1) {
+        if (previousItemButton.isDown && actualItem >= itemsSortedByPage[actualPage].length -1) {
             console.log("Não tem mais item");
         } else {
-            if (this.input.keyboard.checkDown(downButton, 500)) {
+            if (this.input.keyboard.checkDown(previousItemButton, 500)) {
                 nextItem(this);
             }
         }
 
-        if (upButton.isDown && actualItem == 0) {
+        if (nextItemButton.isDown && actualItem == 0) {
             console.log("Não pode subir mais");
         } else {
-            if (this.input.keyboard.checkDown(upButton, 500)) {
+            if (this.input.keyboard.checkDown(nextItemButton, 500)) {
                 previousItem(this);
             }
         }
