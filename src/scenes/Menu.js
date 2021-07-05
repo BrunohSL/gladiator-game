@@ -11,7 +11,7 @@ class Menu extends Phaser.Scene {
 
     update() {
         if (gameStartButton.isDown) {
-            this.scene.start("main_game");
+            this.scene.start("char_selection");
         }
     }
 }

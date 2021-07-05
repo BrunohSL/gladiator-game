@@ -11,6 +11,7 @@ var config = {
     backgroundColor: 0x000000,
     scene: [
         Menu,
+        CharSelection,
         Main,
         WeaponStore,
         ArmorStore,
@@ -24,6 +25,7 @@ var game = new Phaser.Game(config);
 const itemList = new Items();
 const shopClass = new Shop();
 
+var character;
 var player;
 var cursors;
 var canEnter = false;
@@ -31,6 +33,7 @@ var canEnter = false;
 var backFromStore = false;
 var storePosition = {};
 var shopCards;
+var characterList;
 var actualPage;
 var actualItem;
 var actualCardInfo;
@@ -42,11 +45,30 @@ var gameStartButton;
 var goBackButton;
 var nextPageButton;
 var previousPageButton;
-var upButton;
-var downButton;
+var nextItemButton;
+var previousItemButton;
+
+var nextCharacterButton;
+var previousCharacterButton;
+var newCharButton;
+var saveCharButton;
+var loadCharButton;
+var deleteCharButton;
 
 var playerSpeed = 350;
 var doors;
+
+function saveGame(player, saveSlot) {
+    localStorage.setItem(saveSlot, JSON.stringify(player));
+}
+
+function loadGame(saveSlot) {
+    return JSON.parse(localStorage.getItem(saveSlot));
+}
+
+function deleteGame(saveSlot) {
+    localStorage.removeItem(saveSlot);
+}
 
 function createTextAndDestroy(x, y, text, context) {
     var newText = context.add.text(x, y, text, {fontFamily: "courier", color: "black"});
